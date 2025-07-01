@@ -1,0 +1,34 @@
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../../config/database.js';
+
+const Professor = sequelize.define('Professor', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
+  nome: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  disciplina: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    validate: {
+      isEmail: true
+    }
+  },
+  telefone: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  }
+}, {
+  tableName: 'professores',
+  timestamps: true,
+});
+
+export default Professor;
